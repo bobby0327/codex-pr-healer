@@ -13,7 +13,7 @@ export default function Home() {
     setResult(null);
 
     try {
-      const res = await fetch("http://localhost:3000/api/heal", {
+      const res = await fetch("/api/heal", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code, error }),
@@ -21,7 +21,7 @@ export default function Home() {
       const data = await res.json();
       setResult(data);
     } catch (err) {
-      alert("Failed to connect to backend server.");
+      alert("Failed to execute agentic healing loop.");
     } finally {
       setLoading(false);
     }
@@ -35,7 +35,6 @@ export default function Home() {
       </header>
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Input Panel */}
         <div className="space-y-4">
           <div>
             <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Broken Code Snippet</label>
@@ -64,7 +63,6 @@ export default function Home() {
           </button>
         </div>
 
-        {/* Output Panel */}
         <div className="bg-slate-900 border border-slate-800 rounded-lg p-6 space-y-4">
           <h2 className="text-lg font-semibold text-slate-200">Agent Trajectory & Results</h2>
 
